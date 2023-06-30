@@ -25,6 +25,30 @@ schemas | List of Redshift schemas that need to be unloaded. This is a YAML list
 &emsp;table_name | Name of the table in Redshift 
 &emsp;sort_key_col | Sort key column name of the Redshift table. 
 
+```yaml
+---
+redshift_config:
+  dryrun: False  
+  port: 5439
+  username: <user_name>
+  database_name: <db_name>
+  cluster_id: <cluster_id>
+  url: <url> 
+  region: <region>
+  bucket_name: <s3_bucket_name>
+  parallel_threads: <Number of parallel threads e.g. 30> 
+  conn_string: <connection string>
+schemas:
+- schema_name: <schema_name> 
+  tables:
+  - table_name: <table_name>
+    sort_key_col: <sort_key_name>
+- schema_name: <schema_name_2>
+  tables:
+  - table_name: <table_name_2>
+  - table_name: <table_name_3>
+
+```
 
 ```sh
 nohup python3 unload_sortkey_v3.py > idt_rpt_common_downloads_6_7_2023.out &
