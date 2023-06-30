@@ -20,10 +20,10 @@ bucket_name | Name of the S3 bucket where the Redshift UNLOAD will write the out
 parallel_threads | Number of threads to run UNLOAD commands. 
 conn_string | Connection string for Redshift cluster 
 schemas: | List of Redshift schemas that need to be unloaded. This is a YAML list. 
-  schema_name | Name of the schema to unload 
-  tables | YAML list of tables in the schema that needs to be unloaded. 
-    table_name | Name of the table in Redshift 
-    sort_key_col | Sort key column name of the Redshift table. 
+&emsp;schema_name | Name of the schema to unload 
+&emsp;tables | YAML list of tables in the schema that needs to be unloaded. 
+&emsp;&emsp;table_name | Name of the table in Redshift 
+&emsp;&emsp;sort_key_col | Sort key column name of the Redshift table. 
 
 
 ```sh
