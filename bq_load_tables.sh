@@ -22,7 +22,7 @@
 #                  table_splits_1
 #                  table_splits_2
 
-export GCS_FOLDER_NAME=gs://tr-redshift-bigquery-load/sort_key_test_5_3_2023_3_test2/sort_key_test_5_3_2023_3/
+export GCS_FOLDER_NAME=gs://<bucket_name>/<folder_name>/
 
 for dataset in $(echo "$(gcloud storage ls $GCS_FOLDER_NAME)" | awk '{n=split($0, array, "/"); print array[n-1]}')
 do
