@@ -9,8 +9,7 @@ For bulk unload of Redshift tables it is required to UNLOAD the data using multi
 
 Parameter | Description | 
 ---|---|
-dryrun |True - If no UNLOAD is needed. Just for testing and debugging purposes.
-False - Run the UNLOAD commands.
+dryrun |True - If no UNLOAD is needed. Just for testing and debugging purposes. \n False - Run the UNLOAD commands.
 port | Redshift port number
 username | User name of the Redshift cluster
 database_name | Database name of the redshift cluster
