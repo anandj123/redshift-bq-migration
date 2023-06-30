@@ -9,22 +9,22 @@ For bulk unload of Redshift tables it is required to UNLOAD the data using multi
 
 Parameter | Description | 
 ---|---|
-dryrun |True - If no UNLOAD is needed. Just for testing and debugging purposes.  |
-     |   False - Run the UNLOAD commands. |
-port | Redshift port number |
-username | User name of the Redshift cluster |
-database_name | Database name of the redshift cluster |
-cluster_id | Cluster id of the Redshift cluster |
-url | URL of the Redshift cluster |
-region | Region of the Redshift cluster |
-bucket_name | Name of the S3 bucket where the Redshift UNLOAD will write the output |
-parallel_threads | Number of threads to run UNLOAD commands. |
-conn_string | Connection string for Redshift cluster |
-schemas: | List of Redshift schemas that need to be unloaded. This is a YAML list. |
-    schema_name | Name of the schema to unload |
-    tables | YAML list of tables in the schema that needs to be unloaded. |
-       table_name | Name of the table in Redshift |
-       sort_key_col | Sort key column name of the Redshift table. |
+dryrun |True - If no UNLOAD is needed. Just for testing and debugging purposes.  
+     |   False - Run the UNLOAD commands. 
+port | Redshift port number 
+username | User name of the Redshift cluster  
+database_name | Database name of the redshift cluster 
+cluster_id | Cluster id of the Redshift cluster 
+url | URL of the Redshift cluster 
+region | Region of the Redshift cluster 
+bucket_name | Name of the S3 bucket where the Redshift UNLOAD will write the output 
+parallel_threads | Number of threads to run UNLOAD commands. 
+conn_string | Connection string for Redshift cluster 
+schemas: | List of Redshift schemas that need to be unloaded. This is a YAML list. 
+    schema_name | Name of the schema to unload 
+    tables | YAML list of tables in the schema that needs to be unloaded. 
+       table_name | Name of the table in Redshift 
+       sort_key_col | Sort key column name of the Redshift table. 
 
 
 ```sh
