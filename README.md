@@ -19,7 +19,7 @@ region | Region of the Redshift cluster
 bucket_name | Name of the S3 bucket where the Redshift UNLOAD will write the output 
 parallel_threads | Number of threads to run UNLOAD commands. 
 conn_string | Connection string for Redshift cluster 
-schemas: | List of Redshift schemas that need to be unloaded. This is a YAML list. 
+schemas | List of Redshift schemas that need to be unloaded. This is a YAML list. 
 &emsp;schema_name | Name of the schema to unload 
 &emsp;tables | YAML list of tables in the schema that needs to be unloaded. 
 &emsp;&emsp;table_name | Name of the table in Redshift 
