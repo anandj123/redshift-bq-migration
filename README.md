@@ -6,7 +6,9 @@ For bulk unload of Redshift tables it is required to UNLOAD the data using multi
 ![Architecture diagram](img/redshif_bq_arch.png)
 
 # Scripts for Triggering AWS Redshift UNLOAD command
+The [python program](unload_sortkey_v2.py) can leverage a YAMl file configuration to schedule the UNLOAD using multi threaded application. The YAML configuration file require the following parameters.
 
+## YAML parameters
 Parameter | Description | 
 ---|---|
 dryrun |True - If no UNLOAD is needed. Just for testing and debugging purposes. False - Run the UNLOAD commands. 
@@ -25,6 +27,7 @@ schemas | List of Redshift schemas that need to be unloaded. This is a YAML list
 &emsp;table_name | Name of the table in Redshift 
 &emsp;sort_key_col | Sort key column name of the Redshift table. 
 
+## Example YAML file
 ```yaml
 ---
 redshift_config:
@@ -49,19 +52,29 @@ schemas:
   - table_name: <table_name_3>
 
 ```
+## Trigger UNLOAD
+To trigger the Redshift UNLOAD you can use the following command to run the python program in background so that it doesn't hang up when HUP (Hangup command) is issues.
 
 ```sh
 nohup python3 unload_sortkey_v3.py > idt_rpt_common_downloads_6_7_2023.out &
 ```
 
 # Script for copy from S3 to Google Cloud Storage
+Once the tables are unloaded to S3, you could leverage the following command to copy the AWS S3 files to Google Cloud Storage.
 
 ```sh
 ./download_s3.sh 
 ```
 
 # Script for loading from Google Cloud Storage to Google BigQuery
+The following script could be used to copy the Google Cloud Storage files to BigQuery and create tables from them. In this example the files that are downloaded are Parquet files so BigQuery can infer schema from the files.
+
 
 ```sh
 ./bq_load_tables.sh
 ```
+
+Some times the DECIMAL precision of Redshift can be more than default DECIMAl precision for BigQuery. The above script assume that and uses ```-decimal_target_types="BIGNUMERIC"``` for loading the data.
+
+# Summary
+UNLOAD comamnd in Redshift could be bottleneck in Redshift to BigQuery migration. This tool can be used as a workaround for speeding up the UNLOAD command using multi-threaded application based on sortkey column (if defined) on the tables.
